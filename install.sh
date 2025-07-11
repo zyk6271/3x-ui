@@ -2,6 +2,7 @@
 
 red='\033[0;31m'
 green='\033[0;32m'
+blue='\033[0;34m'
 yellow='\033[0;33m'
 plain='\033[0m'
 
@@ -33,10 +34,22 @@ arch() {
         armv7* | armv7 | arm ) echo 'armv7' ;;
         armv6* | armv6 ) echo 'armv6' ;;
         armv5* | armv5 ) echo 'armv5' ;;
-        armv5* | armv5 ) echo 's390x' ;;
+        s390x) echo 's390x' ;;
         *) echo -e "${green}不支持的CPU架构! ${plain}" && rm -f install.sh && exit 1 ;;
     esac
 }
+
+check_glibc_version() {
+    glibc_version=$(ldd --version | head -n1 | awk '{print $NF}')
+
+    required_version="2.32"
+    if [[ "$(printf '%s\n' "$required_version" "$glibc_version" | sort -V | head -n1)" != "$required_version" ]]; then
+        echo -e "${red}------>>>GLIBC版本 $glibc_version 太旧了！ 要求2.32或以上版本${plain}"
+        echo -e "${green}-------->>>>请升级到较新版本的操作系统以便获取更高版本的GLIBC${plain}"
+        exit 1
+            echo -e "${green}-------->>>>GLIBC版本： $glibc_version（符合高于2.32的要求）${plain}"
+}
+check_glibc_version
 
 echo ""
 echo -e "${yellow}---------->>>>>当前系统的架构为: $(arch)${plain}"
@@ -129,13 +142,13 @@ install_base() {
     ubuntu | debian | armbian)
         apt-get update && apt-get install -y -q wget curl tar tzdata
         ;;
-    centos | almalinux | rocky | oracle)
+    centos | rhel | almalinux | rocky | ol)
         yum -y update && yum install -y -q wget curl tar tzdata
         ;;
-    fedora)
+    fedora | amzn | virtuozzo)
         dnf -y update && dnf install -y -q wget curl tar tzdata
         ;;
-    arch | manjaro)
+    arch | manjaro | parch)
         pacman -Syu && pacman -Syu --noconfirm wget curl tar tzdata
         ;;
     alpine)
