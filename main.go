@@ -240,7 +240,7 @@ func showSetting(show bool) {
 	fmt.Println("")
 	fmt.Println("--------------------------------------------------")
 	fmt.Println("")
-	}
+
 }
 
 func updateTgbotEnableSts(status bool) {
