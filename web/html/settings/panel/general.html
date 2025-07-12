@@ -1,4 +1,9 @@
 {{define "settings/panel/general"}}
+<style>
+    .red-placeholder input::placeholder {
+    color: red;
+  }
+</style>
 <a-collapse default-active-key="1">
     <a-collapse-panel key="1" header='{{ i18n "pages.xray.generalConfigs"}}'>
         <a-setting-list-item paddings="small">
