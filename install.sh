@@ -39,6 +39,7 @@ arch() {
     esac
 }
 
+echo ""
 check_glibc_version() {
     glibc_version=$(ldd --version | head -n1 | awk '{print $NF}')
 
