@@ -190,18 +190,24 @@ func showSetting(show bool) {
 		fmt.Println(Green + "Current panel settings as follows (当前面板设置如下):" + Reset)
 		fmt.Println("")
 		if certFile == "" || keyFile == "" {
-                                                   fmt.Println(Red + "警告：面板未安装证书进行SSL保护" + Reset)
+                                                   fmt.Println(Red + "------>> 警告：面板未安装证书进行SSL保护" + Reset)
 		} else {
-                                                   fmt.Println(Green + "面板已安装证书采用SSL保护" + Reset)
+                                                   fmt.Println(Green + "------>> 面板已安装证书采用SSL保护" + Reset)
 		}
-
+                fmt.Println("")
 		hasDefaultCredential := func() bool {
 			return userModel.Username == "admin" && crypto.CheckPasswordHash(userModel.Password, "admin")
 		}()
-
-		fmt.Println(Green + fmt.Sprintf("hasDefaultCredential（默认凭证）: %s", hasDefaultCredential) + Reset)
+                if hasDefaultCredential == true {
+                                                   fmt.Println(Red + "------>> 警告：使用了默认的admin账号/密码，容易被扫描" + Reset)
+		} else {
+                                                   fmt.Println(Green + "------>> 为非默认admin账号/密码，请牢记" + Reset)
+		}
+		fmt.Println("")
 		fmt.Println(Green + fmt.Sprintf("port（端口号）: %d", port) + Reset)
 		fmt.Println(Green + fmt.Sprintf("webBasePath（访问路径）: %s", webBasePath) + Reset)
+		fmt.Println(Green + "PS：为安全起见，不显示账号和密码" + Reset)
+		fmt.Println(Green + "若您已经忘记账号/密码，请用脚本选项〔6〕重新设置" + Reset)
 
 	                 fmt.Println("")
 		fmt.Println("--------------------------------------------------")
