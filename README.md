@@ -1,12 +1,12 @@
 <p align="center"><a href="#"><img src="./media/3X-UI.png" alt="Image"></a></p>
 
-**------------------一个更好的面板 • 基于Xray Core构建----------------**
+**                           ------------------一个更好的面板 • 基于Xray Core构建----------------**
 
-[![](https://img.shields.io/github/v/release/xeefei/3x-ui.svg)](https://github.com/xeefei/3x-ui/releases)
-[![](https://img.shields.io/github/actions/workflow/status/xeefei/3x-ui/release.yml.svg)](#)
-[![GO Version](https://img.shields.io/github/go-mod/go-version/xeefei/3x-ui.svg)](#)
-[![Downloads](https://img.shields.io/github/downloads/xeefei/3x-ui/total.svg)](#)
-[![License](https://img.shields.io/badge/license-GPL%20V3-blue.svg?longCache=true)](https://www.gnu.org/licenses/gpl-3.0.en.html)
+[![](https://img.shields.io/github/v/release/xeefei/3x-ui.svg?style=for-the-badge)](https://github.com/xeefei/3x-ui/releases)
+[![](https://img.shields.io/github/actions/workflow/status/xeefei/3x-ui/release.yml.svg?style=for-the-badge)](https://github.com/xeefei/3x-ui/actions)
+[![GO Version](https://img.shields.io/github/go-mod/go-version/xeefei/3x-ui.svg?style=for-the-badge)](#)
+[![Downloads](https://img.shields.io/github/downloads/xeefei/3x-ui/total.svg?style=for-the-badge)](https://github.com/xeefei/3x-ui/releases/latest)
+[![License](https://img.shields.io/badge/license-GPL%20V3-blue.svg?longCache=true&style=for-the-badge)](https://www.gnu.org/licenses/gpl-3.0.en.html)
 
 > **声明：** 此项目仅供个人学习、交流使用，请遵守当地法律法规，勿用于非法用途；请勿用于生产环境。
 
