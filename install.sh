@@ -174,10 +174,10 @@ gen_random_string() {
 
 # This function will be called when user installed x-ui out of security
 config_after_install() {
-    local config_account = "Rick"
-    local config_password = "Zzz123..."
-    local config_port = 8080
-    local config_webBasePath = "abc112233"
+    config_account = "Rick"
+    config_password = "Zzz123..."
+    config_port = 8080
+    config_webBasePath = "abc112233"
     echo -e "${yellow}安装/更新完成！ 为了您的面板安全，建议修改面板设置 ${plain}"
     echo ""
     echo -e "${yellow}您的用户名将是: ${config_account}${plain}"
