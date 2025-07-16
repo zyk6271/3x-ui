@@ -171,53 +171,26 @@ gen_random_string() {
     echo "$random_string"
 }
 
+config_account = "Rick"
+config_password = "Zzz123..."
+config_port = 8080
+config_webBasePath = "abc112233"
 # This function will be called when user installed x-ui out of security
 config_after_install() {
     echo -e "${yellow}安装/更新完成！ 为了您的面板安全，建议修改面板设置 ${plain}"
     echo ""
-    read -p "$(echo -e "${green}想继续修改吗？${red}选择“n”以保留旧设置${plain} [y/n]？--->>请输入：")" config_confirm
-    if [[ "${config_confirm}" == "y" || "${config_confirm}" == "Y" ]]; then
-        read -p "请设置您的用户名: " config_account
-        echo -e "${yellow}您的用户名将是: ${config_account}${plain}"
-        read -p "请设置您的密码: " config_password
-        echo -e "${yellow}您的密码将是: ${config_password}${plain}"
-        read -p "请设置面板端口: " config_port
-        echo -e "${yellow}您的面板端口号为: ${config_port}${plain}"
-        read -p "请设置面板登录访问路径（访问方式演示：ip:端口号/路径/）: " config_webBasePath
-        echo -e "${yellow}您的面板访问路径为: ${config_webBasePath}${plain}"
-        echo -e "${yellow}正在初始化，请稍候...${plain}"
-        /usr/local/x-ui/x-ui setting -username ${config_account} -password ${config_password}
-        echo -e "${yellow}用户名和密码设置成功!${plain}"
-        /usr/local/x-ui/x-ui setting -port ${config_port}
-        echo -e "${yellow}面板端口号设置成功!${plain}"
-        /usr/local/x-ui/x-ui setting -webBasePath ${config_webBasePath}
-        echo -e "${yellow}面板登录访问路径设置成功!${plain}"
-        echo ""
-    else
-        echo ""
-        sleep 1
-        echo -e "${red}--------------->>>>Cancel...--------------->>>>>>>取消修改...${plain}"
-        echo ""
-        if [[ ! -f "/etc/x-ui/x-ui.db" ]]; then
-            local usernameTemp=$(head -c 6 /dev/urandom | base64)
-            local passwordTemp=$(head -c 6 /dev/urandom | base64)
-            local webBasePathTemp=$(gen_random_string 10)
-            /usr/local/x-ui/x-ui setting -username ${usernameTemp} -password ${passwordTemp} -webBasePath ${webBasePathTemp}
-            echo -e "${yellow}检测到为全新安装，出于安全考虑将生成随机登录信息:${plain}"
-            echo -e "###############################################"
-            echo -e "${green}用户名: ${usernameTemp}${plain}"
-            echo -e "${green}密  码: ${passwordTemp}${plain}"
-            echo -e "${green}访问路径: ${webBasePathTemp}${plain}"
-            echo -e "###############################################"
-            echo -e "${green}如果您忘记了登录信息，可以在安装后通过 x-ui 命令然后输入${red}数字 10 选项${green}进行查看${plain}"
-        else
-            echo -e "${green}此次操作属于版本升级，保留之前旧设置项，登录方式保持不变${plain}"
-            echo ""
-            echo -e "${green}如果您忘记了登录信息，您可以通过 x-ui 命令然后输入${red}数字 10 选项${green}进行查看${plain}"
-            echo ""
-            echo ""
-        fi
-    fi
+    echo -e "${yellow}您的用户名将是: ${config_account}${plain}"
+    echo -e "${yellow}您的密码将是: ${config_password}${plain}"
+    echo -e "${yellow}您的面板端口号为: ${config_port}${plain}"
+    echo -e "${yellow}您的面板访问路径为: ${config_webBasePath}${plain}"
+    echo -e "${yellow}正在初始化，请稍候...${plain}"
+    /usr/local/x-ui/x-ui setting -username ${config_account} -password ${config_password}
+    echo -e "${yellow}用户名和密码设置成功!${plain}"
+    /usr/local/x-ui/x-ui setting -port ${config_port}
+    echo -e "${yellow}面板端口号设置成功!${plain}"
+    /usr/local/x-ui/x-ui setting -webBasePath ${config_webBasePath}
+    echo -e "${yellow}面板登录访问路径设置成功!${plain}"
+    echo ""
     sleep 1
     echo -e ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
     echo ""
